@@ -25,7 +25,7 @@ pipeline{
 				sh 'terraform plan'
 			}
 		}
-		stage('Terraform apply'){
+		stage('Terraform Apply'){
 			steps{
                 echo "Terraform action is ---> apply"
 				sh 'terraform apply --auto-approve'
