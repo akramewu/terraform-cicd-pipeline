@@ -1,5 +1,8 @@
 pipeline{
 	agent any
+    tools{
+        terraform 'terraform-11'
+    }
 	stages{
         stage('Checkout'){
             steps{
@@ -8,19 +11,27 @@ pipeline{
         }
 		stage('Terraform Init'){
 			steps{
-				sh label: '', script: 'terraform init'
+                echo "Terraform action is ---> init"
+                sh ('terraform init')
 			}
 		}
-		stage('Terraform plan'){
+		stage('Terraform Validate'){
 			steps{
-                echo "Terraform action is ---> plan"
-				sh label: '', script: 'terraform plan'
+                echo "Terraform action is ---> Validate"
+				sh 'terraform validate'
+			}
+		}
+
+        stage('Terraform Plan'){
+			steps{
+                echo "Terraform action is ---> Plan"
+				sh 'terraform plan'
 			}
 		}
 		stage('Terraform apply'){
 			steps{
                 echo "Terraform action is ---> apply"
-				sh label: '', script: 'terraform apply --auto-approve'
+				sh 'terraform apply --auto-approve'
 			}
 		}
 	}
