@@ -1,8 +1,5 @@
 pipeline{
 	agent any
-	tools {
-		terraform 'terraform-version-12'
-	}
 	stages{
         stage('Checkout'){
             steps{
@@ -16,6 +13,7 @@ pipeline{
 		}
 		stage('Terraform plan'){
 			steps{
+                echo "Terraform action is ---> plan"
 				sh label: '', script: 'terraform plan'
 			}
 		}
