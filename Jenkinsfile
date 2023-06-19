@@ -14,7 +14,7 @@ pipeline {
         }
         stage('Terraform Plan') {
             steps {
-                sh 'pwd;cd terraform/ ; terraform init'
+                sh 'pwd;cd /jenkinsdata/azure-pipeline-akramul/workspace/terraform/ ; terraform init'
             }
         }
     /*
