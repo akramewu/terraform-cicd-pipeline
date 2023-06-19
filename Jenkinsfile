@@ -1,5 +1,8 @@
 pipeline{
 	agent any
+    tools {
+      terraform "Terraform 1.5.0"
+  }
 	stages{
         stage('Checkout'){
             steps{
