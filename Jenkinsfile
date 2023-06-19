@@ -3,15 +3,21 @@ pipeline {
     stages {
         stage('Git Checkout') {
             steps {
-                git branch: 'main', credentialsId: '308e2027-1806-4707-8315-370d442691f9', url: 'https://github.com/akramewu/terraform-cicd-pipeline.git'
+                script {
+                    dir('terraform')
+                    /* groovylint-disable-next-line NestedBlockDepth */
+                    {
+                        git branch: 'main', credentialsId: '308e2027-1806-4707-8315-370d442691f9', url: 'https://github.com/akramewu/terraform-cicd-pipeline.git'
+                    }
+                }
             }
         }
-        stage('Terraform Init') {
+        stage('Terraform Plan') {
             steps {
-                sh 'terraform init'
+                sh 'pwd;cd terraform/ ; terraform init'
             }
         }
-
+    /*
         stage('Terraform Plan') {
             steps {
                 echo 'Terraform action is ---> Plan'
@@ -24,5 +30,6 @@ pipeline {
                 sh 'terraform apply --auto-approve'
             }
         }
+        */
     }
 }
