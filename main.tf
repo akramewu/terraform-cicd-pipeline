@@ -10,10 +10,10 @@ terraform {
 }
 
 provider "azurerm" {
-  subscription_id = "d751ecfe-8171-4f88-9aff-69aebef4cfc2"
-  client_id       = "cca22cd1-4860-4be8-b2f4-d6fc417df344"
-  client_secret   = "4uT7Q~u_cR0.yf9xJIsDs_8dkE3FlAPZet2OU"
-  tenant_id       = "42f7676c-f455-423c-82f6-dc2d99791af7"
+  subscription_id = ""
+  client_id       = ""
+  client_secret   = ""
+  tenant_id       = ""
 
   features {
 
@@ -39,7 +39,7 @@ resource "azurerm_subnet" "main" {
   name = "learn-tf-subnet-westeurope"
   virtual_network_name = azurerm_virtual_network.main.name 
   resource_group_name = azurerm_resource_group.main.name
-  address_prefixes = [ "10.0.0.0/24" ] 
+  address_prefixes = [ "" ] 
 }
 
 #Creates network interface card (NIC)
@@ -61,8 +61,8 @@ resource "azurerm_windows_virtual_machine" "name" {
     resource_group_name = azurerm_resource_group.main.name
     location = azurerm_resource_group.main.location
     size = "Standard_B1s"
-    admin_username = "emroot"
-    admin_password = "EmRoot123"
+    admin_username = ""
+    admin_password = "E"
 
     network_interface_ids = [ 
         azurerm_network_interface.internal.id 
